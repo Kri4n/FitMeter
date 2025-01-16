@@ -36,7 +36,7 @@ const WorkoutCard = () => {
         workoutList.map((workout) => (
           <div
             key={workout._id}
-            className="max-w-sm p-14 bg-slate-800 bg-white rounded-lg"
+            className="max-w-sm p-14 bg-slate-800 rounded-lg"
           >
             <a href="#"></a>
             <div className="p-5">
