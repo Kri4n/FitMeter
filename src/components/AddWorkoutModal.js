@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Notyf } from "notyf";
 
-const AddWorkoutModal = () => {
+const AddWorkoutModal = ({ onWorkoutAdded }) => {
   const [name, setName] = useState("");
   const [duration, setDuration] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -29,13 +29,19 @@ const AddWorkoutModal = () => {
         }
       );
       console.log("Workout added:", response.data);
+
+      // Call the function to update workout list
+      onWorkoutAdded(response.data);
+
       notyf.success("New Workout Added");
+
       // Reset form fields
       setName("");
       setDuration("");
       toggleModal();
     } catch (error) {
       console.error("Error adding workout:", error);
+      notyf.error("Error adding workout");
     }
   };
 
